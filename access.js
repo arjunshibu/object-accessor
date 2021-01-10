@@ -11,7 +11,7 @@ function field(root, name, value){
         if(!name.length){
             if(value) current[fieldName] = value;
             return current[fieldName];
-        }else current = current[fieldName];
+        }else if (!(isPrototypePolluted(fieldName))) current = current[fieldName];
     }
     return undefined;
 }
@@ -23,6 +23,10 @@ function objectField(obj, field, value){
         writable: false,
         value: value
     });
+}
+
+function isPrototypePolluted(key) {
+    return ['__proto__', 'constructor', 'prototype'].includes(key);
 }
 
 module.exports = {

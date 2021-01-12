@@ -11,7 +11,7 @@ function field(root, name, value){
         if(!name.length){
             if(value) current[fieldName] = value;
             return current[fieldName];
-        }else if (!(isPrototypePolluted(fieldName))) current = current[fieldName];
+        }else if (!isPrototypePolluted(fieldName)) current = current[fieldName];
     }
     return undefined;
 }
